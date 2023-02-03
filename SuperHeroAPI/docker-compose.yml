@@ -17,5 +17,5 @@ services:
       - /Users/brian/Desktop/dev-.NetCore/DB-Volume:/var/opt/mssql/data
       
     environment:
-      SA_PASSWORD: "8ri@N9538!"
+      SA_PASSWORD: "*********"
       ACCEPT_EULA: "Y"
