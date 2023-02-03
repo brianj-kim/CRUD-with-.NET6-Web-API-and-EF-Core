@@ -19,17 +19,6 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Migrate latest database changes during startup
-using (var scope = app.Services.CreateScope())
-{
-    var dbContext = scope.ServiceProvider
-        .GetRequiredService<DbContext>();
-
-    // Here is the migration executed
-    dbContext.Database.Migrate();
-}
-
-
 // Configure the HTTP request pipeline.
 app.UseSwagger();
 app.UseSwaggerUI();
@@ -41,3 +30,13 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+// Migrate latest database changes during startup
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider
+        .GetRequiredService<DataContext>();
+
+    // Here is the migration executed
+    dbContext.Database.Migrate();
+}
